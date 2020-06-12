@@ -1,1 +1,1 @@
-web: gunicorn app:instaflu
+web: gunicorn instaflu:app
