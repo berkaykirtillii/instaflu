@@ -1,1 +1,1 @@
-web: gunicorn instaflu:app
+web: gunicorn instaflu:app --log-file=-
