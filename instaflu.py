@@ -8,6 +8,10 @@ def index():
     numbers =[1,2,3,4,5]
     return render_template("index.html",number=10,message="deneme mesajı",numbers= numbers)
 
+@app.route("/deneme")
+def deneme():
+    return render_template("deneme.html")
+
 @app.route("/unfollowers",methods = ["GET","POST"])
 def learnUnfollowers():
     if request.method == "POST":
