@@ -22,7 +22,7 @@ def learnUnfollowers():
         class InstaBot:
 
             def __init__(self, username, pw):
-                self.driver = webdriver.Chrome("C:\Users\BERKAY\Desktop\instaflu\chromedriver")
+                self.driver = webdriver.Chrome("chromedriver\chromedriver.exe")
                 self.driver.get("https://www.instagram.com/")
                 sleep(2)
                 self.driver.find_element_by_xpath("//input[@name=\"username\"]")\
