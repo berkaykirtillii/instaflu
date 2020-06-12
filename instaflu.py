@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for
 from selenium import webdriver
 from time import sleep
+import os
 
 app = Flask(__name__)
 @app.route("/")
@@ -22,11 +23,12 @@ def learnUnfollowers():
         class InstaBot:
 
             def __init__(self, username, pw):
+                
                 self.driver = webdriver.Chrome("chromedriver\chromedriver.exe")
                 self.driver.get("https://www.instagram.com/")
                 sleep(2)
                 self.driver.find_element_by_xpath("//input[@name=\"username\"]")\
-                   .send_keys(username)
+                   .send_keys(os.environ['chromedriver.exe'])
                 self.driver.find_element_by_xpath("//input[@name=\"password\"]")\
                    .send_keys(pw)
                 self.driver.find_element_by_xpath('//button[@type="submit"]')\
