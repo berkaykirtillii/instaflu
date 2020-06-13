@@ -5,7 +5,7 @@ import os
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 
@@ -27,7 +27,7 @@ def deneme():
         driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[9]/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div/div[1]/a/h3").click()
         return render_template("deneme.html",source=driver.page_source)
     else:
-
+        
         return render_template("deneme.html")
 
 @app.route("/unfollowers",methods = ["GET","POST"])
