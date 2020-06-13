@@ -1,7 +1,14 @@
 from flask import Flask,render_template,request,redirect,url_for
 from selenium import webdriver
 from time import sleep
-import os
+
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.binary_location = GOOGLE_CHROME_PATH
 
 app = Flask(__name__)
 @app.route("/")
@@ -24,7 +31,7 @@ def learnUnfollowers():
 
             def __init__(self, username, pw):
                 
-                self.driver = webdriver.Chrome("chromedriver")
+                self.driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
                 self.driver.get("https://www.instagram.com/")
                 sleep(2)
                 self.driver.find_element_by_xpath("//input[@name=\"username\"]")\
