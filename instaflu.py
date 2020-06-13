@@ -21,9 +21,9 @@ def deneme():
     if request.method == "POST":
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
         driver.get("https://www.instagram.com/")
-        return render_template("deneme.html",source="ayşe")
+        return render_template("deneme.html",source=driver.page_source)
     else:
-        return render_template("deneme.html",source="ahmet")
+        return render_template("deneme.html")
 
 @app.route("/unfollowers",methods = ["GET","POST"])
 def learnUnfollowers():
