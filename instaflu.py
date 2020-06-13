@@ -23,7 +23,7 @@ def deneme():
         driver.get("https://www.instagram.com/")
         return render_template("deneme.html")
     else:
-        return render_template("deneme.html",source=driver.page_source)
+        return render_template("deneme.html",source="ahmet")
 
 @app.route("/unfollowers",methods = ["GET","POST"])
 def learnUnfollowers():
