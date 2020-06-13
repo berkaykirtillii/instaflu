@@ -5,7 +5,7 @@ import os
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 
@@ -16,9 +16,14 @@ def index():
     numbers =[1,2,3,4,5]
     return render_template("index.html",number=10,message="deneme mesajı",numbers= numbers)
 
-@app.route("/deneme")
+@app.route("/deneme",methods = ["GET","POST"])
 def deneme():
-    return render_template("deneme.html")
+    if request.method == "POST":
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        driver.get("https://www.instagram.com/")
+        return render_template("deneme.html")
+    else:
+        return render_template("deneme.html",source=driver.page_source)
 
 @app.route("/unfollowers",methods = ["GET","POST"])
 def learnUnfollowers():
