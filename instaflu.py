@@ -24,11 +24,11 @@ def learnUnfollowers():
 
             def __init__(self, username, pw):
                 
-                self.driver = webdriver.Chrome("chromedriver\chromedriver.exe")
+                self.driver = webdriver.Chrome("chromedriver")
                 self.driver.get("https://www.instagram.com/")
                 sleep(2)
                 self.driver.find_element_by_xpath("//input[@name=\"username\"]")\
-                   .send_keys(os.environ['chromedriver.exe'])
+                   .send_keys(username)
                 self.driver.find_element_by_xpath("//input[@name=\"password\"]")\
                    .send_keys(pw)
                 self.driver.find_element_by_xpath('//button[@type="submit"]')\
