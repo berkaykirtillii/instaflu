@@ -124,7 +124,7 @@ def unfollowers():
         my_bot = InstaBot('towig92092','zaxscdvfbg')
         my_bot.get_unfollowers()   
 
-        return render_template("/toplam.html",unfollowers = unfollowers)
+        return render_template("/unfollowers.html",unfollowers = unfollowers)
     else:
         return redirect(url_for("index")) 
 
