@@ -2,10 +2,6 @@ from flask import Flask,render_template,request,redirect,url_for
 from selenium import webdriver
 from time import sleep
 import os
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.by import By
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
