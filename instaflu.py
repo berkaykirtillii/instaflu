@@ -55,15 +55,15 @@ def unfollowers():
 
             #finding names of unfollowers
             def get_unfollowers(self):
+                takipFlag = False
                 self.driver.get("https://www.instagram.com/" + userName)
                 sleep(2)
                 try:
                     self.driver.find_element_by_xpath("//a[contains(@href,'/following')]").click()                  
                 except Exception:
                     self.driver.find_element_by_xpath("//button[text()='Takip Et']").click()
-                #wait =  WebDriverWait(self.driver,30)
-                #takipEdildi = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[contains(@href,'/following')]")))
-                    sleep(10)
+                    takipFlag = True
+                    sleep(20)
                     self.driver.refresh()
                     self.driver.find_element_by_xpath("//a[contains(@href,'/following')]").click()    
                         
@@ -75,6 +75,10 @@ def unfollowers():
                 for user in following:
                     if user not in followers:
                         unfollowers.append(user)
+
+                if(takipFlag == True):
+                    self.driver.find_element_by_xpath("/html/body/div[1]/section/main/div/header/section/div[1]/div[2]/span/span[1]/button").click()
+                    self.driver.find_element_by_xpath("//button[text()='Takibi Bırak']").click()
                 
                     
             
